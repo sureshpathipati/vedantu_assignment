@@ -25,10 +25,26 @@ Feature: Simple Hotel Booking on MakeMyTrip
 
 Scenario: To Validate succesful hotel booking on the makemytrip site
   Given I navigate to makemytrip
-  When I Choose Login
-  And I login through GoogleSSO
+  When I login through GoogleSSO
   And I Enter my credentials
     | Email    | forassignments.suresh@gmail.com 	|
     | Password | bangalore2401										|
-  Then  I should see MakeMyTrip Home Page
-  When 
+  When I search hotels with following details
+  	|place     | Bengaluru|
+  	|CheckIn   | 1-september-2021|
+  	|CheckOut  | 2-september-2021|
+  	|adult     | 2|
+  	|child     | 1|
+  	|childage  | 2|
+  And I apply cost filter with following details
+  	|Min       | 500|
+  	|Max       | 5000|
+  And I select the first available hotel
+  And I go back previous search page
+  And I reset back the price filter
+  And I select the last option from popular filters
+  And I select the first available hotel
+ 	When I logout from the makemytrip site
+
+
+
